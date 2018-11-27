@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>Helloword</title>
+    <meta charset="utf-8">
+    <title>Helloword</title>
 </head>
+
 <body>
-	<div id='example'>
-	</div>
-	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
-	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
-	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
-	<script type="text/babel">
-		ReactDOM.render(
-			<h1>Hello Word!!</h1>,
-			document.getElementById("example")
-		)
-	</script>
+    <div id='example'>
+    </div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        //直接继承 React.Component 类之后, props 通过 this 获取,声明函数则通过参数传递
+	    class Clock extends React.Component{
+	    	render(){
+	    		return (<h1>HelloWord!!<br/>现在是{this.props.date}</h1>)
+		    }
+		}
+
+		function tick(){
+			//元素可以赋值给变量,用属性给组件传值
+			const element=<Clock date={new Date().toLocaleTimeString()}/>
+			ReactDOM.render(
+				element,
+				document.getElementById("example")
+			)
+		}
+		tick()
+		//每次都需要手动更新
+		setInterval(tick,1000)
+    </script>
 </body>
+
 </html>
