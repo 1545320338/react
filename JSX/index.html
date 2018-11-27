@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSX 语法</title>
+</head>
+
+<body>
+    <div id='example'></div>
+</body>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<script type="text/babel">
+    let i=0;
+	let fontStyle={
+		color:"red",
+		background:"#000"
+	}
+	let arr=[
+		<li key="111">第一天</li>,
+		<li key="222">第二天</li>
+	]
+	//创建一个html标签
+	let htmllabel = <div className='foo' >Html Label</div>
+
+	//创建一个React 组件,只需要一个大写开头的变量
+	let ReactP = (porps)=>{
+		return <p>ReactP{porps.date}</p>
+	};
+	let reactlabel=<ReactP date='2018' />
+	ReactDOM.render(
+		<div>
+			<h1>JSX 语法</h1>
+			<p data-myattribute="somevalue">这是一个不错的 javascript 库</p>
+
+			<h3>可以使用这样的语法:&#123;1+1&#125;</h3>
+			<p> 结果:{1+1}</p>
+
+			<h3>还可以使用三元运算符conditional</h3>
+			<p>例如:&#123;i==1?"是的":"不是"&#125;</p>
+
+			<p>结果:{i==1?"是的":"不是"}</p>
+			<p style={fontStyle}>内联样式</p>
+			<p>{/*这样写一行注释*/}</p>
+
+			<h3>可以这样写列表</h3>
+			<ol >{arr}</ol>
+
+			<h3>这样来渲染一个 html 标签</h3>
+			{htmllabel}
+
+			<h3>这样来渲染一个 react 标签</h3>
+			{reactlabel}
+		</div>,
+		document.getElementById('example')
+	)
+</script>
+
+</html>
