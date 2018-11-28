@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>组件语法</title>
+</head>
+
+<body>
+    <div id='example'></div>
+</body>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<script type="text/babel">
+	//可以这样定义组件,注意不能使用函数表达式,props 通过参数接收
+    function HiMessage(props){
+    	return <h1>Hi {props.title}</h1>
+	}
+	let himessage=<HiMessage title="Sr" />
+
+	function HelloMessage(props){
+		return <h1>Hello {props.message}</h1>
+	}
+	//可以这样继承来实例一个组件,但是prop 需要用 this 来获取
+	class Url extends React.Component{
+		render(){
+			return <a href={this.props.url} target="_blank">这是一个链接啊</a>
+		}
+	}
+	// 传参通过属性,但是注意 class 要改成 className,for 要改成 htmlFor,因为这些是保留字
+	// 可以这样混合组件,但是注意,顶级对象只能有一个(此处为 div)
+	function App(){
+		return (
+		<div>
+			<HelloMessage message='Sr ya'/>
+			<HiMessage title="Sr" />
+			<Url url="http://www.yxlovo.com"/>
+		</div>)
+	}
+	ReactDOM.render(
+		<App/>,
+		document.getElementById('example')
+	)
+</script>
+
+</html>
